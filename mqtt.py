@@ -26,16 +26,22 @@ def on_message(client, userdata, msg):
     payload = msg.payload.decode('utf-8').lower()
     print(f'{msg.topic} {payload}')
     for controller in controllers:
-        if payload == 'power_on':        
-            controller.emit('power_on1')
-            controller.emit('power_on2')
-            controller.emit('power_on3')
-        elif payload == 'power_off':
-            controller.emit('power_off1')
-            controller.emit('power_off2')
-            controller.emit('power_off3')
-        else:
-            controller.emit(payload)
+        try:
+            if payload == 'power_on':        
+                controller.emit('power_on1')
+                controller.emit('power_on2')
+                controller.emit('power_on3')
+                print('Emitting Power ON')
+            elif payload == 'power_off':
+                controller.emit('power_off1')
+                controller.emit('power_off2')
+                controller.emit('power_off3')
+                print('Emitting Power OFF')
+            else:
+                controller.emit(payload)
+                print(f'Emitting {payload.upper()}')
+        except:
+            print(f'Error emitting {payload}')
 
 
 mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
