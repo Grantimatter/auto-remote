@@ -30,18 +30,16 @@ def on_message(client, userdata, msg):
             if payload == 'power_on':        
                 controller.emit('power_on1')
                 controller.emit('power_on2')
-                controller.emit('power_on3')
                 print('Emitting Power ON')
             elif payload == 'power_off':
                 controller.emit('power_off1')
                 controller.emit('power_off2')
-                controller.emit('power_off3')
                 print('Emitting Power OFF')
             else:
                 controller.emit(payload)
                 print(f'Emitting {payload.upper()}')
-        except:
-            print(f'Error emitting {payload}')
+        except Exception as e:
+            print(f'Error emitting {payload}: {e}')
 
 
 mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
