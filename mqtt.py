@@ -5,7 +5,7 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--host', '-H')
-parser.add_argument('--port', '-p', default=1883)
+parser.add_argument('--port', '-p', default=1883, type=int)
 parser.add_argument('--topic', '-t', default='$SYS/#')
 parser.add_argument('remotes', nargs='+')
 
