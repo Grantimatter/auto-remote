@@ -1,4 +1,4 @@
-#!python
+#!/usr/bin/python
 from ircodec.command import CommandSet
 import time
 
