@@ -1,2 +1,11 @@
+docstring-to-markdown==0.15
 ircodec==0.3.0
+jedi==0.19.2
+paho-mqtt==2.1.0
+parso==0.8.4
 pigpio==1.78
+pluggy==1.5.0
+python-lsp-jsonrpc==1.1.2
+python-lsp-server==1.12.2
+setuptools==75.8.0.post0
+ujson==5.10.0
