@@ -13,8 +13,7 @@ args = parser.parse_args()
 
 controllers = []
 for remote in args.remotes:
-    controller = CommandSet(Path(remote).stem, emitter_gpio=18, receiver_gpio=17, description=Path(remote).stem)
-    controller.load(remote)
+    controller = CommandSet.loca(remote)
     controllers.append(controller)
 
 
