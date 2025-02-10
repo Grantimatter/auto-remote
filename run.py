@@ -1,3 +1,4 @@
+#!python
 from ircodec.command import CommandSet
 import time
 
