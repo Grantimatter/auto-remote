@@ -13,7 +13,7 @@ args = parser.parse_args()
 
 controllers = []
 for remote in args.remotes:
-    controller = CommandSet.loca(remote)
+    controller = CommandSet.load(remote)
     controllers.append(controller)
 
 
