@@ -1,8 +1,13 @@
 #!/usr/bin/python
 from ircodec.command import CommandSet
 import time
+import argpare
 
-controller = CommandSet.load('hisense-remote.json')
+parser = argparse.ArgumentParser()
+parser.add_argument("path")
+args = parser.parse_args()
+
+controller = CommandSet.load(args.path)
 
 
 controller.emit('power')
