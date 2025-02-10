@@ -9,7 +9,7 @@ args = parser.parse_args()
 
 controller = CommandSet.load(args.path)
 
-controller.emit('power1')
+controller.emit('power2')
 time.sleep(5)
 controller.emit('volume_up')
 time.sleep(1)
