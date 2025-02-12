@@ -61,6 +61,6 @@ while True:
         break;
     except Exception as e:
         print(f'Error connecting to MQTT Broker {args.host}: {e}')
-        print(f'Retrying connection to MQTT Broker {host}')
+        print(f'Retrying connection to MQTT Broker {args.host}')
 
 mqttc.loop_forever(retry_first_connection=True, timeout=5)
