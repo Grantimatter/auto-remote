@@ -54,13 +54,13 @@ def on_connect_fail(client, userdata):
 mqttc.on_connect_fail = on_connect_fail
 
 print(f'Connecting to {args.host}')
-mqttc.connect(args.host, args.port, 60)
 
-# while True:
-#     try:
-#         break;
-#     except Exception as e:
-#         print(f'Error connecting to MQTT Broker {args.host}: {e}')
-#         print(f'Retrying connection to MQTT Broker {host}')
+while True:
+    try:
+        mqttc.connect(args.host, args.port, 60)
+        break;
+    except Exception as e:
+        print(f'Error connecting to MQTT Broker {args.host}: {e}')
+        print(f'Retrying connection to MQTT Broker {host}')
 
 mqttc.loop_forever(retry_first_connection=True, timeout=5)
