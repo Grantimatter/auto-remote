@@ -42,9 +42,24 @@ def on_message(client, userdata, msg):
             print(f'Error emitting {payload}: {e}')
 
 
+    
+
+
 mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 mqttc.on_connect = on_connect
+mqttc.on_connect_fail = on_connect_fail
 mqttc.on_message = on_message
 
+def on_connect_fail(client, userdata):
+    mqttc.connect(args.host, args.port, 60)
+
 mqttc.connect(args.host, args.port, 60)
-mqttc.loop_forever(retry_first_connection=True)
+
+# while True:
+#     try:
+#         break;
+#     except Exception as e:
+#         print(f'Error connecting to MQTT Broker {args.host}: {e}')
+#         print(f'Retrying connection to MQTT Broker {host}')
+
+mqttc.loop_forever(retry_first_connection=True, timeout=5)
