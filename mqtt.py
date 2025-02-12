@@ -42,17 +42,18 @@ def on_message(client, userdata, msg):
             print(f'Error emitting {payload}: {e}')
 
 
-    
-
-
 mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 mqttc.on_connect = on_connect
-mqttc.on_connect_fail = on_connect_fail
 mqttc.on_message = on_message
 
+
 def on_connect_fail(client, userdata):
+    print(f'Failed to connect to {args.host}, attempting connection again...')
     mqttc.connect(args.host, args.port, 60)
 
+mqttc.on_connect_fail = on_connect_fail
+
+print(f'Connecting to {args.host}')
 mqttc.connect(args.host, args.port, 60)
 
 # while True:
